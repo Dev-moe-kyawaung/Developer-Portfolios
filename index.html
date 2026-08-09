@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="my" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ===== META TAGS ===== -->
+    <title>Moe Kyaw Aung | Senior Android Developer မိုးကျော်အောင်</title>
+    <meta name="description" content="Senior Android Developer - Kotlin, Jetpack Compose, MVVM, Clean Architecture Expert in Myanmar & Thailand">
+    <meta name="keywords" content="Moe Kyaw Aung, Android Developer, Kotlin, Jetpack Compose, MVVM, Myanmar, Bangkok">
+    <meta name="author" content="Moe Kyaw Aung">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://Dev-moe-kyawaung.github.io/">
+    <meta property="og:title" content="Moe Kyaw Aung - Senior Android Developer">
+    <meta property="og:description" content="World-class Android Developer Portfolio">
+    <meta property="og:image" content="https://res.cloudinary.com/dye5qpwii/image/upload/v1778527878/IMG_20260430_053105_uef0yr.png">
+    
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    
+    <!-- ===== FONTS ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Myanmar:wght@400;700;900&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cyber-theme.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- ===== EXTERNAL LIBS ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+
+<body id="top" class="cyber-body">
+    <!-- ===================================================== -->
+    <!-- LOADER SCREEN -->
+    <!-- ===================================================== -->
+    <div id="loader" class="loader-screen">
+        <div class="loader-inner">
+            <div class="loader-hexagon">
+                <span class="hex-part"></span>
+                <span class="hex-part"></span>
+                <span class="hex-part"></span>
+                <span class="hex-part"></span>
+                <span class="hex-part"></span>
+                <span class="hex-part"></span>
+            </div>
+            <div class="loader-logo">M<span class="accent">K</span>A</div>
+            <div class="loader-bar">
+                <div class="loader-progress" id="loaderProgress"></div>
+            </div>
+            <div class="loader-text">SYSTEM LOADING...</div>
+            <div class="loader-sub">ပုံစံလုပ်ဆောင်နေသည်</div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- CUSTOM CURSOR -->
+    <!-- ===================================================== -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- ===================================================== -->
+    <!-- BACK TO TOP -->
+    <!-- ===================================================== -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- ===================================================== -->
+    <!-- NAVIGATION BAR -->
+    <!-- ===================================================== -->
+    <nav class="cyber-nav" id="cyberNav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-brand">
+                <span class="brand-logo">&lt;/&gt;</span>
+                <span class="brand-name">Moe<span class="accent">K</span>yawAung</span>
+            </a>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="#hero" class="nav-item active">Home</a>
+                <a href="#profile" class="nav-item">Profile</a>
+                <a href="#skills" class="nav-item">Skills</a>
+                <a href="#roadmap" class="nav-item">Roadmap</a>
+                <a href="#projects" class="nav-item">Projects</a>
+                <a href="#apps" class="nav-item">Apps</a>
+                <a href="#certificates" class="nav-item">Certificates</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="lang-toggle" id="langToggle" title="Language">
+                    <span class="lang-icon">မြန်</span>
+                </button>
+                <button class="theme-toggle" id="themeToggle" title="Theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button class="hamburger" id="hamburgerBtn">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================================================== -->
+    <!-- HERO SECTION WITH 3D -->
+    <!-- ===================================================== -->
+    <section id="hero" class="hero-section">
+        <!-- Three.js Canvas -->
+        <canvas id="heroCanvas"></canvas>
+        <!-- Particles Background -->
+        <div id="particlesContainer"></div>
+        <!-- Matrix Rain -->
+        <div class="matrix-rain" id="matrixRain"></div>
+        
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <div class="hero-badge fade-down">
+                <span class="badge-dot"></span>
+                <span class="badge-text">AVAILABLE FOR WORK</span>
+            </div>
+            
+            <div class="hero-main">
+                <div class="hero-greeting">Hello, World! / မင်္ဂလာပါ</div>
+                
+                <h1 class="hero-title">
+                    <span class="prefix">&lt;</span>
+                    <span class="typewriter" id="typewriter"></span>
+                    <span class="suffix">/&gt;</span>
+                </h1>
+                
+                <div class="hero-name-block">
+                    <h2 class="hero-name-myanmar">မိုးကျော်အောင်</h2>
+                    <div class="name-divider">
+                        <span class="line"></span>
+                        <span class="star">✦</span>
+                        <span class="line"></span>
+                    </div>
+                    <h2 class="hero-name-english glitch-effect" data-text="MOE KYAW AUNG">MOE KYAW AUNG</h2>
+                </div>
+                
+                <div class="hero-role">
+                    <span class="role-symbol">◈</span>
+                    <span class="role-text">SENIOR ANDROID DEVELOPER</span>
+                    <span class="role-symbol">◈</span>
+                </div>
+                
+                <div class="hero-location">
+                    <span class="loc-icon">📍</span>
+                    <span>Tachileik, Myanmar 🇲🇲 ↔ Bangkok, Thailand 🇹🇭</span>
+                </div>
+                
+                <div class="hero-languages">
+                    <span class="lang-chip">မြန်မာ</span>
+                    <span class="lang-chip">English</span>
+                    <span class="lang-chip">Kotlin ☕</span>
+                </div>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <span class="stat-num counter" data-target="82">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-name">Certificates</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num counter" data-target="45">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-name">Projects</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num counter" data-target="35">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-name">GitHub Accts</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num counter" data-target="3">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-name">Years Exp</span>
+                </div>
+            </div>
+            
+            <!-- CTA Buttons -->
+            <div class="hero-cta">
+                <a href="#projects" class="btn-primary">
+                    <span class="btn-icon">🚀</span>View Projects
+                </a>
+                <a href="#contact" class="btn-secondary">
+                    <span class="btn-icon">📧</span>Contact Me
+                </a>
+                <a href="#" class="btn-download" download>
+                    <span class="btn-icon">📄</span>Download CV
+                </a>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="hero-social">
+                <a href="https://github.com/Dev-moe-kyawaung" target="_blank" class="social-link" title="GitHub">
+                    <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/moe-kyaw-aung-2653093a1" target="_blank" class="social-link" title="LinkedIn">
+                    <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.24 8.04h4.52V24H.24V8.04zM8.34 8.04h4.33v2.18h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.92V24h-4.51v-9.94c0-2.37-.05-5.41-3.3-5.41-3.3 0-3.81 2.58-3.81 5.24V24H8.34V8.04z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/channel/UCuTXUguZb4xjeL2nX8WJG" target="_blank" class="social-link" title="YouTube">
+                    <svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 00.5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 002.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 002.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+                </a>
+                <a href="https://gravatar.com/moekyawaung2026" target="_blank" class="social-link" title="Gravatar">
+                    <span class="gravatar">G</span>
+                </a>
+                <a href="https://bsky.app/profile/moekyawaung96.bsky.social" target="_blank" class="social-link" title="Bluesky">
+                    <span class="bsky">🦋</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>SCROLL</span>
+        </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- ABOUT / PROFILE SECTION -->
+    <!-- ===================================================== -->
+    <section id="profile" class="section cyber-section" data-section="01">
+        <div class="section-header reveal">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Professional Profile</h2>
+            <div class="section-line"></div>
+            <span class="section-myanmar">ကိုယ်ရေးအကျဉ်း</span>
+        </div>
+        
+        <div class="container">
+            <div class="profile-layout">
+                <!-- Image Side -->
+                <div class="profile-image-side reveal-left">
+                    <div class="profile-image-frame holographic">
+                        <div class="scan-line"></div>
+                        <img src="https://res.cloudinary.com/dye5qpwii/image/upload/v1778527878/IMG_20260430_053105_uef0yr.png" alt="Moe Kyaw Aung - Profile Picture" class="profile-photo">
+                        <div class="image-corner tl"></div>
+                        <div class="image-corner tr"></div>
+                        <div class="image-corner bl"></div>
+                        <div class="image-corner br"></div>
+                    </div>
+                    <div class="profile-status-card">
+                        <div class="status-live">
+                            <span class="live-dot"></span>
+                            <span class="live-text">AVAILABLE</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Info Side -->
+                <div class="profile-info-side reveal-right">
+                    <div class="profile-badge">PROFILE / ပရိုဖိုင်</div>
+                    <h3 class="profile-title">Senior Android Engineer</h3>
+                    
+                    <div class="profile-description">
+                        <p class="bio-text-myanmar">
+                            ကုဒ်ရေးခြင်းကို ဝါသနာပါပြီး ယဉ်ကျေးမှုကို လေးစားသော developer တစ်ဦးဖြစ်သည်။
+                        </p>
+                        <p class="bio-text-english">
+                            Passionate and self-motivated developer focused on building responsive, modern, and user-friendly applications. Certified across Android development, Kotlin, Jetpack Compose, and Clean Architecture.
+                        </p>
+                        <p class="bio-text-english">
+                            Experienced in Firebase, RESTful APIs, and CI/CD pipelines. Enthusiastic about AI/ML integration, performance optimization, and mentoring junior developers.
+                        </p>
+                    </div>
+                    
+                    <!-- Info Grid -->
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Full Name</span>
+                            <span class="info-value">Moe Kyaw Aung (မိုးကျော်အောင်)</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Tachileik, Myanmar 🇲🇲</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Email</span>
+                            <span class="info-value">moekyawaung@programmer.net</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Phone 1</span>
+                            <span class="info-value">+95 9 889 000 889</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Phone 2</span>
+                            <span class="info-value">+959 666 000 050</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Experience</span>
+                            <span class="info-value">3+ Years</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Current Focus</span>
+                            <span class="info-value">Kotlin · Compose · MVVM</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Status</span>
+                            <span class="info-value accent-green">● Open to Work</span>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-tags">
+                        <span class="profile-tag">✨ Kotlin</span>
+                        <span class="profile-tag">📐 Jetpack Compose</span>
+                        <span class="profile-tag">🏗️ MVVM</span>
+                        <span class="profile-tag">🧹 Clean Architecture</span>
+                        <span class="profile-tag">☁️ Firebase</span>
+                        <span class="profile-tag">🤖 AI/ML</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- TECH STACK / SKILLS SECTION -->
+    <!-- ===================================================== -->
+    <section id="skills" class="section cyber-section alt-bg" data-section="02">
+        <div class="section-header reveal">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="section-line"></div>
+            <span class="section-myanmar">ကျွမ်းကျင်မှုများ</span>
+        </div>
+        
+        <div class="container">
+            <!-- Category Tabs -->
+            <div class="skill-tabs reveal">
+                <button class="skill-tab active" data-category="all">All</button>
+                <button class="skill-tab" data-category="android">Android</button>
+                <button class="skill-tab" data-category="backend">Backend</button>
+                <button class="skill-tab" data-category="ai">AI/ML</button>
+                <button class="skill-tab" data-category="security">Security</button>
+                <button class="skill-tab" data-category="tools">Tools</button>
+            </div>
+            
+            <!-- Skills Grid -->
+            <div class="skills-grid-container reveal">
+                <div class="skill-category-content active" data-category="all">
+                    <div class="skill-bars-wrapper">
+                        <!-- Android Skills -->
+                        <div class="skill-group">
+                            <h4 class="skill-group-title">📱 Android Development</h4>
+                            <div class="skill-bars">
+                                <div class="skill-bar-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Kotlin</span>
+                                        <span class="skill-percent">95%</span>
+                                    </div>
+                                    <div class="skill-track">
+                                        <div class="skill-fill" data-width="95%" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Jetpack Compose</span>
+                                        <span class="skill-percent">92%</span>
+                                    </div>
+                                    <div class="skill-track">
+                                        <div class="skill-fill" data-width="92%" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Android SDK</span>
+                                        <span class="skill-percent">90%</span>
+                                    </div>
+                                    <div class="skill-track">
+                                        <div class="skill-fill" data-width="90%" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Dagger/Hilt</span>
+                                        <span class="skill-percent">88%</span>
+                                    </div>
+                                    <div class="skill-track">
+                                        <div class="skill-fill" data-width="88%" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Architecture -->
+                        <div class="skill-group">
+                            <h4 class="skill-group-title">🏗️ Architecture</h4>
+                            <div class="skill-bars">
+                                <div class="skill-bar-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">MVVM</span>
+                                        <span class="skill-percent">94%</span>
+                                    </div>
+                                    <div class="skill-track">
+                                        <div class="skill-fill" data-width="94%" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">MVI</span>
+                                        <span class="skill-percent">90%</span>
+                                    </div>
+                                    <div class="skill-track">
+                                        <div class="skill-fill" data-width="90%" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Clean Architecture</span>
+                                        <span class="skill-percent">93%</span>
+                                    </div>
+                                    <div class="skill-track">
+                                        <div class="skill-fill" data-width="93%" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Coroutines & Flow</span>
+                                        <span class="skill-percent">92%</span>
+                                    </div>
+                                    <div class="skill-track">
+                                        <div class="skill-fill" data-width="92%" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Backend Skills -->
+                        <div class="skill-group">
+                            <h4 class="skill-group-title">☁️ Backend & Cloud</h4>
+                            <div class="skill-bars">
+                                <div class="skill-bar-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Firebase</span>
+                                        <span class="skill-percent">94%</span>
+                                    </div>
+                                    <div class="skill-track">
+                                        <div class="skill-fill" data-width="94%" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">REST APIs</span>
+                                        <span class="skill-percent">93%</span>
+                                    </div>
+                                    <div class="skill-track">
+                                        <div class="skill-fill" data-width="93%" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Retrofit/OkHttp</span>
+                                        <span class="skill-percent">91%</span>
+                                    </div>
+                                    <div class="skill-track">
+                                        <div class="skill-fill" data-width="91%" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar-item">
+                                    <div class="skill-header">
+                                        <span class="skill-name">Room DB</span>
+                                        <span class="skill-percent">89%</span>
+                                    </div>
+                                    <div class="skill-track">
+                                        <div class="skill-fill" data-width="89%" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tech Cloud -->
+                <div class="tech-cloud">
+                    <h4 class="cloud-title">Technology Cloud</h4>
+                    <div class="cloud-chips">
+                        <span class="cloud-chip" data-weight="high">Kotlin</span>
+                        <span class="cloud-chip" data-weight="high">Android</span>
+                        <span class="cloud-chip" data-weight="high">Compose</span>
+                        <span class="cloud-chip" data-weight="medium">Java</span>
+                        <span class="cloud-chip" data-weight="high">Firebase</span>
+                        <span class="cloud-chip" data-weight="medium">Python</span>
+                        <span class="cloud-chip" data-weight="high">MVVM</span>
+                        <span class="cloud-chip" data-weight="low">Flutter</span>
+                        <span class="cloud-chip" data-weight="medium">REST API</span>
+                        <span class="cloud-chip" data-weight="medium">Room</span>
+                        <span class="cloud-chip" data-weight="low">Docker</span>
+                        <span class="cloud-chip" data-weight="low">Git</span>
+                        <span class="cloud-chip" data-weight="medium">Coroutines</span>
+                        <span class="cloud-chip" data-weight="low">CI/CD</span>
+                        <span class="cloud-chip" data-weight="medium">Dagger</span>
+                        <span class="cloud-chip" data-weight="low">Linux</span>
+                        <span class="cloud-chip" data-weight="low">SQL</span>
+                        <span class="cloud-chip" data-weight="low">Dart</span>
+                        <span class="cloud-chip" data-weight="low">JSON</span>
+                        <span class="cloud-chip" data-weight="low">OOP</span>
+                        <span class="cloud-chip" data-weight="low">Design Patterns</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- ANDROID ROADMAP SECTION -->
+    <!-- ===================================================== -->
+    <section id="roadmap" class="section cyber-section" data-section="03">
+        <div class="section-header reveal">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Android Roadmap</h2>
+            <div class="section-line"></div>
+            <span class="section-myanmar">သင်ယူမှုလမ်းကြောင်း</span>
+        </div>
+        
+        <div class="container">
+            <!-- Roadmap Timeline -->
+            <div class="roadmap-container">
+                <!-- Level 1 -->
+                <div class="roadmap-item reveal-left" data-level="1">
+                    <div class="roadmap-icon">📱</div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-level">LEVEL 01</div>
+                        <h4 class="roadmap-title">Kotlin Fundamentals</h4>
+                        <p class="roadmap-desc">Syntax, null safety, OOP, Functional programming, Coroutines basics</p>
+                        <div class="roadmap-skills">
+                            <span class="skill-pill">Syntax ✓</span>
+                            <span class="skill-pill">Null Safety ✓</span>
+                            <span class="skill-pill">Collections ✓</span>
+                        </div>
+                        <div class="roadmap-progress">
+                            <div class="progress-track"><div class="progress-bar" style="width: 100%;"></div></div>
+                            <span class="progress-text">100%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Level 2 -->
+                <div class="roadmap-item reveal-right" data-level="2">
+                    <div class="roadmap-icon">🎨</div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-level">LEVEL 02</div>
+                        <h4 class="roadmap-title">UI Fundamentals</h4>
+                        <p class="roadmap-desc">XML layouts, View system, RecyclerView, Fragments, Navigation</p>
+                        <div class="roadmap-skills">
+                            <span class="skill-pill">XML ✓</span>
+                            <span class="skill-pill">Views ✓</span>
+                            <span class="skill-pill">RecyclerView ✓</span>
+                        </div>
+                        <div class="roadmap-progress">
+                            <div class="progress-track"><div class="progress-bar" style="width: 100%;"></div></div>
+                            <span class="progress-text">100%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Level 3 -->
+                <div class="roadmap-item reveal-left" data-level="3">
+                    <div class="roadmap-icon">⚡</div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-level">LEVEL 03</div>
+                        <h4 class="roadmap-title">Jetpack Compose</h4>
+                        <p class="roadmap-desc">Declarative UI, State hoisting, Composition, Material 3, Animations</p>
+                        <div class="roadmap-skills">
+                            <span class="skill-pill">Composable ✓</span>
+                            <span class="skill-pill">State ✓</span>
+                            <span class="skill-pill">Material 3 ✓</span>
+                        </div>
+                        <div class="roadmap-progress">
+                            <div class="progress-track"><div class="progress-bar" style="width: 92%;"></div></div>
+                            <span class="progress-text">92%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Level 4 -->
+                <div class="roadmap-item reveal-right" data-level="4">
+                    <div class="roadmap-icon">🏗️</div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-level">LEVEL 04</div>
+                        <h4 class="roadmap-title">Architecture Patterns</h4>
+                        <p class="roadmap-desc">MVVM, MVI, Clean Architecture, Repository pattern, Module design</p>
+                        <div class="roadmap-skills">
+                            <span class="skill-pill">MVVM ✓</span>
+                            <span class="skill-pill">MVI ✓</span>
+                            <span class="skill-pill">Clean Arch ✓</span>
+                        </div>
+                        <div class="roadmap-progress">
+                            <div class="progress-track"><div class="progress-bar" style="width: 94%;"></div></div>
+                            <span class="progress-text">94%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Level 5 -->
+                <div class="roadmap-item reveal-left" data-level="5">
+                    <div class="roadmap-icon">🔧</div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-level">LEVEL 05</div>
+                        <h4 class="roadmap-title">Dependency Injection</h4>
+                        <p class="roadmap-desc">Dagger 2, Hilt, Koin - Building testable applications</p>
+                        <div class="roadmap-skills">
+                            <span class="skill-pill">Dagger ✓</span>
+                            <span class="skill-pill">Hilt ✓</span>
+                            <span class="skill-pill">Koin ✓</span>
+                        </div>
+                        <div class="roadmap-progress">
+                            <div class="progress-track"><div class="progress-bar" style="width: 88%;"></div></div>
+                            <span class="progress-text">88%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- FEATURED PROJECTS SECTION -->
+    <!-- ===================================================== -->
+    <section id="projects" class="section cyber-section alt-bg" data-section="04">
+        <div class="section-header reveal">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="section-line"></div>
+            <span class="section-myanmar">ပရောဂျက်များ</span>
+        </div>
+        
+        <div class="container">
+            <div class="project-filters reveal">
+                <button class="project-filter-btn active" data-filter="all">All</button>
+                <button class="project-filter-btn" data-filter="android">Android</button>
+                <button class="project-filter-btn" data-filter="pos">POS</button>
+                <button class="project-filter-btn" data-filter="media">Media</button>
+                <button class="project-filter-btn" data-filter="utility">Utility</button>
+            </div>
+            
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Project Card 1 -->
+                <div class="project-card hologram-card reveal" data-category="android">
+                    <div class="project-thumbnail" style="background-image: url('https://res.cloudinary.com/dye5qpwii/image/upload/v1778795829/copilot_image_1778795000722_okryxj.png');">
+                        <div class="card-overlay">
+                            <h4 class="card-title">PulseSync Android</h4>
+                            <span class="card-subtitle">Real-time Sync Platform</span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-desc">Advanced multi-module app with Firebase, offline-first design, CI/CD.</p>
+                        <div class="project-tech">
+                            <span class="tech-chip">Kotlin</span>
+                            <span class="tech-chip">Compose</span>
+                            <span class="tech-chip">Firebase</span>
+                        </div>
+                        <a href="https://github.com/Dev-moe-kyawaung" target="_blank" class="project-link">
+                            View on GitHub →
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Add more project cards... -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Continue with other sections... -->
+
+    <!-- ===================================================== -->
+    <!-- AI ASSISTANT CHATBOT -->
+    <!-- ===================================================== -->
+    <section id="ai-assistant" class="section cyber-section" data-section="12">
+        <div class="section-header reveal">
+            <span class="section-number">12</span>
+            <h2 class="section-title">AI Assistant</h2>
+            <div class="section-line"></div>
+            <span class="section-myanmar">AI အကူအညီ</span>
+        </div>
+        
+        <div class="container">
+            <div class="ai-chat-layout">
+                <div class="chat-window reveal-left">
+                    <div class="chat-header">
+                        <div class="chat-avatar">🤖</div>
+                        <div class="chat-info">
+                            <div class="chat-name">MKA Assistant</div>
+                            <div class="chat-status">● Online</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-body" id="chatBody">
+                        <div class="message bot">
+                            <p>Hello! I'm Moe's AI assistant. Ask me anything about his skills, projects, or experience.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-area">
+                        <input type="text" id="userInput" placeholder="Type your question..." class="chat-input">
+                        <button id="sendButton" class="chat-send">➤</button>
+                    </div>
+                </div>
+                
+                <div class="ai-quick-actions reveal-right">
+                    <h4 class="quick-title">Quick Questions</h4>
+                    <button class="quick-action-btn" onclick="quickQuestion('What are your main skills?')">
+                        💡 Skills
+                    </button>
+                    <button class="quick-action-btn" onclick="quickQuestion('Show best projects')">
+                        🚀 Projects
+                    </button>
+                    <button class="quick-action-btn" onclick="quickQuestion('Your certificates?')">
+                        📜 Certificates
+                    </button>
+                    <button class="quick-action-btn" onclick="quickQuestion('How to contact?')">
+                        📧 Contact
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- CONTACT SECTION -->
+    <!-- ===================================================== -->
+    <section id="contact" class="section cyber-section alt-bg" data-section="13">
+        <div class="section-header reveal">
+            <span class="section-number">13</span>
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="section-line"></div>
+            <span class="section-myanmar">ဆက်သွားရန်</span>
+        </div>
+        
+        <div class="container">
+            <div class="contact-layout">
+                <div class="contact-info-side reveal-left">
+                    <h3 class="contact-heading">Let's Build Something Amazing</h3>
+                    <p class="contact-text">
+                        Currently available for freelance projects, collaborations, and full-time opportunities.
+                    </p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-detail">
+                            <span class="cd-icon">📧</span>
+                            <div class="cd-content">
+                                <span class="cd-label">Email</span>
+                                <span class="cd-value">moekyawaung@programmer.net</span>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="cd-icon">📱</span>
+                            <div class="cd-content">
+                                <span class="cd-label">Phone</span>
+                                <span class="cd-value">+95 9 889 000 889</span>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="cd-icon">🌐</span>
+                            <div class="cd-content">
+                                <span class="cd-label">GitHub</span>
+                                <span class="cd-value">github.com/Dev-moe-kyawaung</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-media-row">
+                        <a href="https://github.com/Dev-moe-kyawaung" target="_blank" class="sm-link">Github</a>
+                        <a href="https://www.linkedin.com/in/moe-kyaw-aung-2653093a1" target="_blank" class="sm-link">LinkedIn</a>
+                        <a href="https://www.youtube.com/channel/UCuTXUguZb4xjeL2nX8WJG" target="_blank" class="sm-link">YouTube</a>
+                        <a href="https://gravatar.com/moekyawaung2026" target="_blank" class="sm-link">Gravatar</a>
+                        <a href="https://bsky.app/profile/moekyawaung96.bsky.social" target="_blank" class="sm-link">Bluesky</a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-side reveal-right">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-input form-textarea" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit-btn">
+                            Send Message ✈️
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- FOOTER -->
+    <!-- ===================================================== -->
+    <footer class="cyber-footer">
+        <div class="footer-top">
+            <div class="footer-logo">MKA</div>
+            <div class="footer-nav">
+                <a href="#hero" class="footer-link">Home</a>
+                <a href="#profile" class="footer-link">Profile</a>
+                <a href="#skills" class="footer-link">Skills</a>
+                <a href="#projects" class="footer-link">Projects</a>
+                <a href="#contact" class="footer-link">Contact</a>
+            </div>
+        </div>
+        
+        <div class="footer-separator"></div>
+        
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                © <span id="year">2026</span> Moe Kyaw Aung. All rights reserved.
+            </p>
+            <p class="footer-quote">
+                "Code with culture. Build with purpose."
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===================================================== -->
+    <!-- FLOATING AI CHAT WIDGET -->
+    <!-- ===================================================== -->
+    <div class="floating-chat-widget" id="chatWidget">
+        <button class="chat-launcher" id="chatLauncher">
+            <span class="chat-icon">💬</span>
+            <span class="chat-label">Ask AI</span>
+        </button>
+        <div class="chat-popup" id="chatPopup">
+            <div class="popup-header">
+                <span>MKA Assistant</span>
+                <button class="close-chat">✕</button>
+            </div>
+            <div class="popup-body" id="popupBody">
+                <div class="message bot">Hello! Ask me anything!</div>
+            </div>
+            <div class="popup-input-row">
+                <input type="text" id="popupInput" placeholder="Type question...">
+                <button id="popupSend">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SCRIPTS -->
+    <!-- ===================================================== -->
+    <script src="js/main.js"></script>
+    <script src="js/three-hero.js"></script>
+    <script src="js/particles-config.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/projects-data.js"></script>
+    <script src="js/apps-collection.js"></script>
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/certificates.js"></script>
+</body>
+</html>
